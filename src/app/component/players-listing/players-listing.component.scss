@@ -1,0 +1,288 @@
+.players-container {
+  display: flex;
+  overflow-x: hidden;
+  .playing-nine-container {
+    width: 250px;
+    height: 100vh;
+    background: #eaf0f2;
+    .upper-left {
+      height: 160px;
+      padding-top: 30px;
+      box-sizing: border-box;
+      .row-1 {
+        text-align: right;
+        width: 100px;
+        margin: auto;
+      }
+      .row-2 {
+        text-align: left;
+        width: 100px;
+        margin: auto;
+      }
+      .separator {
+        width: 80%;
+        margin: auto;
+        margin-top: 15px;
+        span {
+          background: #4700da;
+          display: block;
+          border: none;
+          color: #eaf0f2;
+          height: 1px;
+          background: -webkit-gradient(
+            radial,
+            50% 50%,
+            0,
+            50% 50%,
+            125,
+            from(#4700da),
+            to(#eaf0f2)
+          );
+        }
+      }
+    }
+    .center-left {
+      height: calc(100vh - 160px - 50px - 20px);
+      overflow: auto;
+      .player-card {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        height: 50px;
+        padding: 5px;
+        box-sizing: border-box;
+        margin: 10px auto;
+        img {
+          border-radius: 10px;
+        }
+      }
+      .name-sec {
+        width: 50%;
+        h6 {
+          width: 100%;
+          margin: 0 0 0 10px;
+          font-size: 0.8rem;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        div {
+          display: flex;
+          align-items: center;
+          img {
+            margin: 5px 5px 0 10px;
+          }
+        }
+      }
+      .price-sec {
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 5px;
+        }
+      }
+    }
+    .lower-left {
+      height: 50px;
+      text-align: center;
+      box-sizing: border-box;
+      margin: 10px auto;
+      button {
+        height: 30px;
+        text-transform: uppercase;
+        background: #4700da;
+        color: white;
+        font-size: 0.9rem;
+        border: none;
+        width: 80%;
+        outline: none;
+        cursor: pointer;
+        letter-spacing: 3px;
+      }
+    }
+  }
+  .players-list-container {
+    flex: 1;
+    padding: 0 25px;
+    background: #f0f4f6;
+    .title {
+      font-size: 1.35rem;
+      color: #4700da;
+      margin: 50px 0 20px 0;
+    }
+    .search-box {
+      margin: 0 0 20px 0;
+      input {
+        height: 2rem;
+        min-width: 300px;
+        max-width: 400px;
+        font-size: 1rem;
+        background-image: url(../../../assets/img/search-icon.png);
+        background-position: top 8px left 4px;
+        background-size: 20px 20px;
+        padding-left: 2rem;
+        background-repeat: no-repeat;
+        border: 0;
+        outline: none;
+        background-color: transparent;
+      }
+    }
+    .table-container {
+      height: calc(100vh - 200px);
+      min-height: 85px;
+      overflow: hidden auto;
+    }
+    table {
+      width: 100%;
+      padding: 0 20px;
+      border-collapse: collapse;
+      thead {
+        th {
+          top: 0;
+          position: sticky;
+          text-align: center;
+          padding: 6px 2px;
+          background-color: #eaf0f2;
+          text-transform: uppercase;
+          z-index: 10;
+          img {
+            margin-right: 5px;
+          }
+        }
+        th.name {
+          text-align: left;
+          padding-left: 10px;
+        }
+        th:after {
+          content: "_";
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 2px;
+          display: block;
+          color: #f0f4f6;
+          background: #f0f4f6;
+        }
+      }
+      tbody:before {
+        line-height: 10px;
+        content: "_";
+        display: block;
+        color: #f0f4f6;
+      }
+      tbody {
+        tr {
+          cursor: pointer;
+          &:hover {
+            background: #ecf0f2;
+          }
+          td {
+            text-align: center;
+            padding: 7px 0;
+            border-bottom: 1px solid #8080802b;
+          }
+          td.name {
+            text-align: left;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+    .custom-checkbox-container {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      height: 20px;
+      width: 20px;
+      margin: auto;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 18px;
+      width: 18px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .custom-checkbox-container:hover .checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .custom-checkbox-container.checked .checkmark {
+      background-color: #4700da;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .custom-checkbox-container.checked .checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .custom-checkbox-container .checkmark:after {
+      left: 6px;
+      top: 2px;
+      width: 4px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    .paginator {
+      display: flex;
+      justify-content: flex-end;
+      margin: 10px 10px 0 0;
+      .previous {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        margin-right: 10px;
+        color: #4700da;
+        background: #eaf0f2;
+        cursor: pointer;
+      }
+      .previous::after {
+        content: "<";
+        position: absolute;
+        left: 5px;
+        top: 0;
+      }
+      .next {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        color: #4700da;
+        background: #eaf0f2;
+        cursor: pointer;
+      }
+      .next::after {
+        content: ">";
+        position: absolute;
+        left: 5px;
+        top: 0;
+      }
+      .current {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

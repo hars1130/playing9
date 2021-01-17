@@ -1,0 +1,104 @@
+.betters-wrapper {
+  background: #ecf2f4 url(../../../assets/img/bg.png);
+  overflow: auto;
+  .betters-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 1100px;
+    margin: auto;
+    .upper,
+    .lower {
+      height: 40%;
+      min-height: 250px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      .player-card {
+        height: 160px;
+        width: 140px;
+        padding: 10px;
+        padding-bottom: 0;
+        border: 1px solid #f22e2e;
+        background: white;
+        position: relative;
+        border-radius: 5px;
+        .name-sec {
+          display: flex;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+          }
+          h6 {
+            margin: 0 10px;
+            font-size: 0.8rem;
+            flex: 1;
+          }
+        }
+        .stats {
+          display: flex;
+          flex-wrap: wrap;
+          height: 60px;
+          margin: 15px 0;
+          .stat-item {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            img {
+              margin-right: 5px;
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+        .result {
+          position: absolute;
+          bottom: 0;
+          width: 100px;
+          margin: auto;
+          text-align: center;
+          left: 26px;
+          background: #b00;
+          color: white;
+          border-radius: 10px 10px 0 0;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          padding: 2px 0;
+        }
+        &.winner {
+          padding: 20px;
+          border: 1px solid #005906;
+          .result {
+            left: 40px;
+            background: #005906;
+          }
+        }
+      }
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .line {
+        width: 200px;
+        height: 1px;
+        background: #f9c337;
+        margin: 0 20px;
+      }
+      .opposingBet {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        background: #1a0826;
+        border: 1px solid #f9c337;
+        color: #f9c337;
+        display: inline-block;
+        h1 {
+          font-size: 48px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

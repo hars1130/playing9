@@ -1,0 +1,76 @@
+<div class="players-container">
+    <div class="playing-nine-container">
+        <div class="upper-left">
+            <div class="row-1">
+                <img src="../../../assets/img/blue-three.png" width="50" height="50"/>
+            </div>
+            <div class="row-2">
+                <img src="../../../assets/img/blue-four.png" width="50" height="50"/>
+            </div>
+            <div class="separator">
+                <span></span>
+            </div>
+        </div>
+        <div class="center-left">
+            <div *ngFor="let player of selectedPlayers" class="player-card">
+                <img [src]="player.avatar" width="40" height="40" />
+                <div class="name-sec">
+                    <h6>{{player.name}}</h6>
+                    <div>
+                        <img src="../../../assets/img/roulette.png" width="15" height="15" />{{ player.bet }}
+                        <img src="../../../assets/img/trophy.png" width="15" height="15" />{{ player.wins }}
+                    </div>
+                </div>
+                <div class="price-sec">
+                    <img src="../../../assets/img/price.png" width="15" height="15" />{{ player.price }}
+                </div>
+            </div>
+        </div>
+        <div class="lower-left">
+            <button (click)="onStart()">Start</button>
+        </div>
+    </div>
+    <div class="players-list-container">
+        <div class="title">
+            Select Playing 9
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search players" id="userSearch" [(ngModel)]="userSearch">
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th class="name">Player Name</th>
+                        <th>Avatar</th>
+                        <th><img src="../../../assets/img/roulette.png" width="12" height="12" />Bet</th>
+                        <th><img src="../../../assets/img/trophy.png" width="12" height="12" />Wins</th>
+                        <th>Lost</th>
+                        <th><img src="../../../assets/img/price.png" width="12" height="12" />Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of players?.slice((pageNumber-1)*playersPerPage,(pageNumber-1)*playersPerPage+playersPerPage) | filter: userSearch" (click)="toggleSelection(player)">
+                        <td> 
+                            <div class="custom-checkbox-container" [class.checked]="player.isSelected">
+                                <span class="checkmark"></span>
+                            </div>
+                        </td>
+                        <td class="name">{{ player.name }}</td>
+                        <td><img [src]="player.avatar" width="25" height="25" /></td>
+                        <td>{{ player.bet }}</td>
+                        <td>{{ player.wins }}</td>
+                        <td>{{ player.lost }}</td>
+                        <td>{{ player.price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="paginator">
+            <div *ngIf="pageNumber>minPage" class="previous" (click)="pageNumber = pageNumber-1"></div>
+            <div class="current">{{ pageNumber }}</div>
+            <div *ngIf="maxPage && pageNumber<maxPage" class="next" (click)="pageNumber = pageNumber+1"></div>
+        </div>
+    </div>
+</div>
