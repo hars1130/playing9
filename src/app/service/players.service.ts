@@ -21,8 +21,7 @@ export class PlayersService {
   private selectedPlayers = [];
   private _isLoadingFinished: BehaviorSubject<Boolean> = new BehaviorSubject(false);
   public readonly isLoadingFinished: Observable<Boolean> = this._isLoadingFinished.asObservable();
-  //private apiUrl = "https://s3-ap-southeast-1.amazonaws.com/he-public-data/bets7747a43.json";
-  private apiUrl = "assets/json/players-list.json"
+  private apiUrl = "https://s3-ap-southeast-1.amazonaws.com/he-public-data/bets7747a43.json";
   private jsonUrl = "assets/json/players-list.json";
 
   public getPlayersFromServer() {
@@ -42,7 +41,7 @@ export class PlayersService {
     error=>{
       this.getPlayersListfromJSON().subscribe(players => {
         let id=0;
-        this.players = players.map(p => ({ isSelected: false, name: p.Name, avatar: p["Profile Image"], bet: p.Bet, price: p.Price, wins: 0, lost: 0, id:id++ }));
+        this.players = players.map(p => ({ isSelected: false, name: p.Name, avatar: p["Profile Image"], bet: p.Bet, price: p.Price, wins: 0, lost: 0, id:id++,winnings: 0, }));
         this._isLoadingFinished.next(true);
       });
     }
